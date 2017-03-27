@@ -4,12 +4,20 @@ def input_students
   #create and empty array, I like to use Array.new
   students = Array.new
   #we ask for the first by using old gets.chomp
+
   name = $stdin.gets.chomp
+  puts "Joining which cohort?"
+  cohort = $stdin.gets.chomp
   # now we create the condition for our program to either store or finish
   while !name.empty? do
-    students << {name: name, cohort: :november}
+    students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
     name = $stdin.gets.chomp
+     if !name.empty?
+       puts "Joining which cohort?"
+       cohort = $stdin.gets.chomp
+     end
+
   end
   students
 
