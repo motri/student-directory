@@ -8,20 +8,18 @@ def input_students
   name.capitalize!
   puts "Please enter the age of the student:".center(20)
   age = $stdin.gets.chomp
-    if age.empty?
-      age = "Age not provided"
-    end
+  age = "Age not provided" if age.empty?
   puts "Please enter the nationality of the student:".center(20)
   nationality = $stdin.gets.chomp
-  if nationality.empty?
-    nationality = "Nationality not provided"
-  end
+  nationality = "Nationality not provided" if nationality.empty?
   puts "Joining which cohort?".center(20)
   cohort = $stdin.gets.chomp
-  if cohort.empty?
-    cohort = "Unknown"
+  cohort = "unknown" if cohort.empty?
+  months = %w(january february march april may june july august september october november december unknown)
+  while !months.include? cohort.downcase
+    puts "cohort not recognised, please enter again"
+    cohort = $stdin.gets.chomp
   end
-
 
   while !name.empty? do
     students << {name: name, age: age, nationality: nationality, cohort: cohort}
