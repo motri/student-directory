@@ -6,6 +6,7 @@ def input_students
   #we ask for the first by using old gets.chomp
 
   name = $stdin.gets.chomp
+  name.capitalize!
   puts "Joining which cohort?"
   cohort = $stdin.gets.chomp
   # now we create the condition for our program to either store or finish
@@ -13,6 +14,7 @@ def input_students
     students << {name: name, cohort: cohort}
     puts "Now we have #{students.count} students"
     name = $stdin.gets.chomp
+    name.capitalize!
      if !name.empty?
        puts "Joining which cohort?"
        cohort = $stdin.gets.chomp
@@ -27,9 +29,8 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index() do |student, index|
-    puts "#{index.to_i + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-  end
+  students.each_with_index() {|student, index|
+  puts "#{index.to_i + 1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].match /^A/ }
 end
 
 def print_footer(students)
