@@ -8,10 +8,19 @@ def input_students
   name.capitalize!
   puts "Please enter the age of the student:".center(20)
   age = $stdin.gets.chomp
+    if age.empty?
+      age = "Age not provided"
+    end
   puts "Please enter the nationality of the student:".center(20)
   nationality = $stdin.gets.chomp
+  if nationality.empty?
+    nationality = "Nationality not provided"
+  end
   puts "Joining which cohort?".center(20)
   cohort = $stdin.gets.chomp
+  if cohort.empty?
+    cohort = "Unknown"
+  end
 
 
   while !name.empty? do
@@ -22,10 +31,20 @@ def input_students
      if !name.empty?
        puts "Please enter the age of the student:".center(20)
        age = $stdin.gets.chomp
+         if age.empty?
+           age = "Age not provided"
+         end
        puts "Please enter the nationality of the student:".center(20)
        nationality = $stdin.gets.chomp
+       if nationality.empty?
+         nationality = "Nationality not provided"
+       end
        puts "Joining which cohort?".center(20)
        cohort = $stdin.gets.chomp
+       if cohort.empty?
+         cohort = "Unkown"
+       end
+
      end
   end
   students
