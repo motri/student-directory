@@ -1,21 +1,30 @@
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
+  puts "Please enter the names of the students".center(20)
+  puts "To finish, just hit return twice".center(20)
 
   students = Array.new
 
   name = $stdin.gets.chomp
   name.capitalize!
-  puts "Joining which cohort?"
+  puts "Please enter the age of the student:".center(20)
+  age = $stdin.gets.chomp
+  puts "Please enter the nationality of the student:".center(20)
+  nationality = $stdin.gets.chomp
+  puts "Joining which cohort?".center(20)
   cohort = $stdin.gets.chomp
 
+
   while !name.empty? do
-    students << {name: name, cohort: cohort}
-    puts "Now we have #{students.count} students"
+    students << {name: name, age: age, nationality: nationality, cohort: cohort}
+    puts "Now we have #{students.count} students".center(20)
     name = $stdin.gets.chomp
     name.capitalize!
      if !name.empty?
-       puts "Joining which cohort?"
+       puts "Please enter the age of the student:".center(20)
+       age = $stdin.gets.chomp
+       puts "Please enter the nationality of the student:".center(20)
+       nationality = $stdin.gets.chomp
+       puts "Joining which cohort?".center(20)
        cohort = $stdin.gets.chomp
      end
   end
@@ -23,17 +32,17 @@ def input_students
 end
 
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(20)
+  puts "-------------".center(20)
 end
 
 def print(students)
   students.each_with_index() {|student, index|
-  puts "#{index.to_i + 1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].length < 12 }
+  puts "#{index.to_i + 1}. #{student[:name]}, #{student[:age]}, #{student[:nationality]} (#{student[:cohort]} cohort)".center(20)}
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "Overall, we have #{students.count} great students".center(20)
 end
 
 students = input_students
