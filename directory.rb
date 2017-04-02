@@ -57,11 +57,32 @@ def print_header
   puts "The students of Villains Academy"
   puts "-------------"
 end
-
+=begin This prints out the whole student directory:
 def print(students)
   students.each_with_index() {|student, index|
   puts "#{index.to_i + 1}. #{student[:name]}, #{student[:age]}, #{student[:nationality]} (#{student[:cohort]} cohort)"}
 end
+=end
+def print(students)
+    puts "Select category to search:"
+    category = gets.chomp.downcase
+    categories = %w(cohort name age nationality)
+    while !categories.include? category
+      puts "Category not recognised, please try again:"
+      category = $stdin.gets.chomp.downcase!
+    end
+    puts "Which range:"
+    range = $stdin.gets.chomp
+
+    students.map do |x|
+      x.each_key do |k, y|
+        puts x[:name] if x[k] == range
+     end
+   end
+end
+
+
+
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
