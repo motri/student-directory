@@ -53,9 +53,14 @@ def input_students
   students
 end
 
-def print_header
+def print_header(students)
+  if students.empty?
+    puts "No student information provided."
+  else
+
   puts "The students of Villains Academy"
   puts "-------------"
+end
 end
 =begin This prints out the whole student directory:
 def print(students)
@@ -64,6 +69,9 @@ def print(students)
 end
 =end
 def print(students)
+  if students.empty?
+    exit
+  else
     puts "Select category to search:"
     category = gets.chomp.downcase
     categories = %w(cohort name age nationality)
@@ -79,6 +87,7 @@ def print(students)
         puts x[:name] if x[k] == range
      end
    end
+ end
 end
 
 
@@ -89,6 +98,6 @@ def print_footer(students)
 end
 
 students = input_students
-print_header
+print_header(students)
 print(students)
 print_footer(students)
