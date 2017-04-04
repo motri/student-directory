@@ -90,6 +90,15 @@ def save_students
   file.close
 end
 
+def load_students
+  file = File.open("students.csv", "r")
+  file.readlines.each do |line|
+    name, age, nationality, cohort = line.chomp.split(',')
+    @students << {name: name, age: age, nationality: nationality, cohort: cohort.to_sym}
+  end
+  file.close
+end
+
 def interactive_menu
   loop do
     print_menu
@@ -102,6 +111,7 @@ def print_menu
   puts "2. Show all students"
   puts "3. Show students by category"
   puts "4. Save student list"
+  puts "5. Load students from a file"
   puts "9. Exit"
 end
 
@@ -138,6 +148,8 @@ def process(selection)
     show_students_by_range
   when "4"
     save_students
+  when "5"
+    load_students
   when "9"
     exit
   else
